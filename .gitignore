@@ -16,11 +16,11 @@ venv/
 .DS_Store
 
 # === Model weights and artifacts ===
-*.pth
-*.onnx
-weights/
-*.h5
-*.tflite
+# *.pth
+# *.onnx
+# weights/
+# *.h5
+# *.tflite
 
 # === Image uploads and test images ===
 # images/
