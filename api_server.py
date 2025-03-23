@@ -8,7 +8,7 @@ import numpy as np
 import tensorflow as tf
 import torch
 from torchvision import transforms
-from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
+from torchvision.models import efficientnet_b0
 from io import BytesIO
 
 app = FastAPI()
@@ -18,10 +18,9 @@ NUM_CLASSES = 2  # bottle / can
 class_names = ["bottle", "can"]
 
 def load_effnet_model(path):
-    model = efficientnet_b0(weights=None)
+    model = efficientnet_b0(pretrained=False)
     model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, NUM_CLASSES)
-    state_dict = torch.load(path, map_location=torch.device('cpu'), weights_only=False)
-    model.load_state_dict(state_dict)
+    model.load_state_dict(torch.load(path, map_location='cpu', weights_only=False))  # <- For state_dict only
     model.eval()
     return model
 
@@ -143,6 +142,6 @@ async def process_image_can(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8001)
 
-# Run: uvicorn api:app --reload --port 8000
+# Run: uvicorn main:app --reload --port 8000
