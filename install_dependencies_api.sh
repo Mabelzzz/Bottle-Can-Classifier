@@ -2,7 +2,7 @@
 
 # สร้าง Virtual Environment
 # python3 -m venv venv
-python3.11 -m venv venv # for use tensorflow
+python3 -m venv venv # for use tensorflow
 
 # เปิดใช้งาน Virtual Environment
 source ./venv/bin/activate
