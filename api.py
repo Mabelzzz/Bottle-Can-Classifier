@@ -20,7 +20,10 @@ class_names = ["bottle", "can"]
 def load_effnet_model(path):
     model = efficientnet_b0(pretrained=False)
     model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, NUM_CLASSES)
-    model.load_state_dict(torch.load(path, map_location='cpu'))
+    # model.load_state_dict(torch.load(path, map_location='cpu'))  # <- For state_dict only
+    state_dict = torch.load(path, map_location='cpu', weights_only=False)
+    model.load_state_dict(state_dict)
+
     model.eval()
     return model
 
