@@ -1,0 +1,46 @@
+# === Python cache ===
+__pycache__/
+*.py[cod]
+*.so
+
+# === Jupyter / IPython ===
+.ipynb_checkpoints/
+
+# === Virtual Environments ===
+venv/
+.env/
+.envrc
+*.venv
+
+# === macOS specific ===
+.DS_Store
+
+# === Model weights and artifacts ===
+*.pth
+*.onnx
+weights/
+*.h5
+*.tflite
+
+# === Image uploads and test images ===
+# images/
+# *.jpg
+# *.jpeg
+# *.png
+
+# === Datasets ===
+data_flattened/
+dataset/
+raw-data/
+*.zip
+
+# === VSCode ===
+.vscode/
+
+# === Logs and temp files ===
+*.log
+*.tmp
+*.bak
+
+# === OS Trash ===
+.Trashes
